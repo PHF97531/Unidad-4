@@ -112,13 +112,21 @@ def view_categorias(page: ft.Page, container: ft.Container):
     
     agregar_btn = ft.ElevatedButton(text="Agregar", on_click=agregar_actualizar_categoria)
     
-    container.content = ft.Column([
-        ft.Text("CRUD Categorías", size=24, weight=ft.FontWeight.BOLD),
-        nombre_input,
-        descripcion_input,
-        agregar_btn,
-        tabla
-    ])
+    container.content = ft.ListView(
+        expand= True,
+        spacing=10,
+        padding=20, 
+        auto_scroll=True,
+        controls=[
+            ft.Text("CRUD CATEGORIAS", size=24, weight=ft.FontWeight.BOLD),
+            nombre_input,
+            descripcion_input,
+            agregar_btn,
+            ft.Divider(),
+            tabla
+        ]
+    )
+
     actualizar_tabla()
 
 def view_productos(page: ft.Page, container: ft.Container):
@@ -789,5 +797,4 @@ def main(page: ft.Page):
     page.add(layout)
 
     switch_view("categorias")
-
 ft.app(target=main)
